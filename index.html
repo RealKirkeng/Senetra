@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233b82f6'><path d='M12 2a10 10 0 100 20A10 10 0 0012 2z'/></svg>" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Senetra | Environmental Dashboard</title>
+    <meta name="description" content="Real-time agricultural runoff risk prediction for protecting Norwegian waterways from fertilizer pollution." />
+  </head>
+  <body class="bg-white text-slate-800 overflow-hidden">
+    <div id="app" class="h-screen w-full relative">
+
+      <!-- ================================================================
+           LANDING PAGE
+           ================================================================ -->
+      <section id="landing-page" class="absolute inset-0 z-50 flex flex-col overflow-y-auto bg-stone-50 text-stone-800">
+
+        <!-- Nav bar -->
+        <nav class="sticky top-0 z-40 flex items-center justify-between px-8 py-6 border-b border-stone-200 bg-stone-50/90 backdrop-blur-md">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <img src="/SenetraLogo.png" alt="Senetra Logo" class="w-full h-full object-contain">
+            </div>
+            <span class="font-bold text-stone-900 text-2xl tracking-tight">Senetra</span>
+          </div>
+          <div class="flex items-center space-x-4">
+            <span class="hidden sm:inline-block text-xs font-semibold text-stone-500 uppercase tracking-widest">CASSINI Hackathon</span>
+            <span class="text-xs font-bold text-brand bg-brand/10 px-3 py-1 rounded-sm border border-brand/20 uppercase tracking-wider">Predictive SaaS</span>
+          </div>
+        </nav>
+
+        <!-- Hero -->
+        <div class="relative flex flex-col items-center justify-center px-6 py-32 md:py-48 text-center min-h-[85vh] overflow-hidden">
+          <!-- Background Image -->
+          <div class="absolute inset-0 z-0">
+            <img src="/SenetraWallpaper.png" alt="Senetra Background" class="w-full h-full object-cover hero-zoom">
+            <div class="absolute inset-0 bg-stone-900/40 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-stone-900/20 via-transparent to-stone-50"></div>
+          </div>
+
+          <div class="relative z-10 max-w-4xl mx-auto space-y-10">
+            <div class="fade-up">
+              <span class="inline-flex items-center text-xs font-bold uppercase tracking-widest text-white bg-stone-900/40 px-4 py-2 rounded-sm border border-white/20 backdrop-blur-md shadow-sm">
+                Predictive Runoff Prevention
+              </span>
+            </div>
+            <h1 class="fade-up text-5xl md:text-8xl font-extrabold text-white leading-[1.05] tracking-tight drop-shadow-2xl">
+              Protect Europe's<br><span class="text-brand">Water Systems.</span>
+            </h1>
+            <p class="fade-up text-lg md:text-2xl text-stone-100 leading-relaxed max-w-3xl mx-auto font-medium drop-shadow-lg">
+              Europe faces an escalating water quality crisis. The EU Water Framework Directive mandates ecological compliance. Stop pollution before it reaches critical waterways.
+            </p>
+
+            <div class="fade-up pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button id="enter-dashboard-btn"
+                class="group flex items-center bg-[#69a151] hover:bg-[#4d7c3d] text-white font-extrabold py-5 px-10 rounded-sm shadow-2xl transition-all text-lg border border-white/10">
+                <span>Launch Interactive Platform</span>
+                <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Crisis -->
+        <div class="px-8 py-24 bg-white border-y border-stone-200">
+          <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16 fade-up">
+              <h2 class="text-3xl md:text-4xl font-extrabold text-stone-900 mb-5 tracking-tight">The Dual Crisis of Agricultural Runoff</h2>
+              <p class="text-stone-500 max-w-2xl mx-auto text-lg leading-relaxed">When synthetic fertilizers wash into waterways during heavy rainfall, it triggers a devastating chain reaction impacting both the environment and the economy.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-10">
+              <!-- Ecological -->
+              <div class="bg-stone-50 p-10 border border-stone-200 rounded-sm fade-up">
+                <div class="w-12 h-12 bg-rose-900 flex items-center justify-center mb-8 rounded-sm shadow-sm">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-stone-900 mb-4 tracking-tight">Ecological & Governmental Toll</h3>
+                <p class="text-stone-600 leading-relaxed mb-8">
+                  Runoff causes severe eutrophication, toxic algae blooms, and the collapse of marine ecosystems, creating "dead zones". Governments face massive cleanup costs and looming EU compliance fines.
+                </p>
+                <div class="text-xs font-bold text-rose-900 uppercase tracking-widest border-l-2 border-rose-900 pl-3 py-0.5">Impacts: Marine Life, Aquaculture, EU Compliance</div>
+              </div>
+              <!-- Economic -->
+              <div class="bg-stone-50 p-10 border border-stone-200 rounded-sm fade-up" style="transition-delay: 100ms;">
+                <div class="w-12 h-12 bg-amber-700 flex items-center justify-center mb-8 rounded-sm shadow-sm">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-stone-900 mb-4 tracking-tight">The Financial Bleed</h3>
+                <p class="text-stone-600 leading-relaxed mb-8">
+                  Farmers operate on tight margins where fertilizer is a major expense. When nutrients are washed away, invested capital is lost, and crops suffer from under-nutrition, leading to stunted growth.
+                </p>
+                <div class="text-xs font-bold text-amber-800 uppercase tracking-widest border-l-2 border-amber-700 pl-3 py-0.5">Impacts: Farmer Margins, Crop Yields</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Solution / Data Triad -->
+        <div class="px-8 py-24 bg-stone-50">
+          <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20 fade-up">
+              <span class="text-brand font-bold tracking-widest uppercase text-xs mb-3 block">Our Technology</span>
+              <h2 class="text-3xl md:text-4xl font-extrabold text-stone-900 mb-5 tracking-tight">The Senetra Solution</h2>
+              <p class="text-stone-600 max-w-2xl mx-auto text-lg leading-relaxed">We shift the paradigm from reactive water monitoring to predictive pollution prevention. Our data-orchestration layer integrates open-source intelligence to calculate hyper-local runoff risk.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-10">
+              <!-- Triad 1 -->
+              <div class="bg-white p-8 border border-stone-200 rounded-sm shadow-sm fade-up">
+                <div class="w-10 h-10 bg-stone-100 flex items-center justify-center mb-6 rounded-sm border border-stone-200">
+                  <svg class="w-5 h-5 text-stone-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-stone-900 mb-3 tracking-tight">Where are the farms?</h3>
+                <p class="text-stone-600 mb-8 leading-relaxed text-sm">Geospatial data maps the exact polygonal boundaries of agricultural risk zones across Europe.</p>
+                <div class="text-[10px] font-bold text-stone-500 uppercase tracking-widest">OpenStreetMap / Overpass API</div>
+              </div>
+              
+              <!-- Triad 2 -->
+              <div class="bg-white p-8 border border-stone-200 rounded-sm shadow-sm fade-up" style="transition-delay: 100ms;">
+                <div class="w-10 h-10 bg-stone-100 flex items-center justify-center mb-6 rounded-sm border border-stone-200">
+                  <svg class="w-5 h-5 text-stone-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-stone-900 mb-3 tracking-tight">How wet is the ground?</h3>
+                <p class="text-stone-600 mb-8 leading-relaxed text-sm">Extracting the Soil Water Index (SWI) reveals topsoil saturation. Saturated soil cannot absorb liquid fertilizer.</p>
+                <div class="text-[10px] font-bold text-stone-500 uppercase tracking-widest">Copernicus Sentinel-1 via Meteo</div>
+              </div>
+
+              <!-- Triad 3 -->
+              <div class="bg-white p-8 border border-stone-200 rounded-sm shadow-sm fade-up" style="transition-delay: 200ms;">
+                <div class="w-10 h-10 bg-stone-100 flex items-center justify-center mb-6 rounded-sm border border-stone-200">
+                  <svg class="w-5 h-5 text-stone-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-stone-900 mb-3 tracking-tight">What is the weather?</h3>
+                <p class="text-stone-600 mb-8 leading-relaxed text-sm">Highly accurate, localized 48-hour precipitation forecasts predict imminent heavy rainfall events that trigger runoff.</p>
+                <div class="text-[10px] font-bold text-stone-500 uppercase tracking-widest">MET Norway API</div>
+              </div>
+            </div>
+            
+            <div class="mt-16 bg-stone-900 rounded-sm p-12 md:p-16 text-center text-white fade-up border border-stone-800">
+              <div class="max-w-3xl mx-auto">
+                <h3 class="text-2xl font-bold mb-4 tracking-tight">The Algorithm in Action</h3>
+                <p class="text-stone-400 mb-10 text-lg leading-relaxed">When a farm polygon shows high Soil Moisture AND high expected rainfall within 48 hours, the system flags the zone as High Risk (Do not fertilize) and automatically alerts stakeholders.</p>
+                
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
+                  <div class="flex items-center space-x-3 bg-stone-800 px-5 py-3 rounded-sm border border-stone-700">
+                    <div class="w-2.5 h-2.5 rounded-full bg-brand"></div>
+                    <span class="font-medium text-sm text-stone-200 uppercase tracking-wider">Low Risk</span>
+                  </div>
+                  <div class="flex items-center space-x-3 bg-stone-800 px-5 py-3 rounded-sm border border-stone-700">
+                    <div class="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
+                    <span class="font-medium text-sm text-stone-200 uppercase tracking-wider">Moderate Risk</span>
+                  </div>
+                  <div class="flex items-center space-x-3 bg-stone-800 px-5 py-3 rounded-sm border border-stone-700">
+                    <div class="w-2.5 h-2.5 rounded-full bg-rose-500"></div>
+                    <span class="font-medium text-sm text-stone-200 uppercase tracking-wider">High Risk</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stakeholders -->
+        <div class="px-8 py-24 bg-white border-t border-stone-200">
+          <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20 fade-up">
+              <span class="text-stone-400 font-bold tracking-widest uppercase text-xs mb-3 block">Market Segmentation</span>
+              <h2 class="text-3xl md:text-4xl font-extrabold text-stone-900 mb-5 tracking-tight">Who We Serve</h2>
+              <p class="text-stone-500 max-w-2xl mx-auto text-lg leading-relaxed">Senetra sits uniquely at the intersection of environmental monitoring and agronomical yield optimization.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+              <!-- B2G -->
+              <div class="fade-up">
+                <div class="text-xs font-bold text-stone-500 tracking-widest uppercase mb-4 border-b border-stone-200 pb-4">B2G - Governments</div>
+                <h3 class="text-2xl font-bold text-stone-900 mb-4 tracking-tight">Environmental Authorities</h3>
+                <p class="text-stone-600 mb-8 leading-relaxed">Monitor entire catchment areas and proactively manage water crises to ensure EU Water Framework Directive compliance and avoid massive fines.</p>
+                <ul class="space-y-3 text-sm text-stone-700 font-medium">
+                  <li class="flex items-center"><svg class="w-4 h-4 text-brand mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Regional Dashboards</li>
+                  <li class="flex items-center"><svg class="w-4 h-4 text-brand mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Historical Compliance Reporting</li>
+                  <li class="flex items-center"><svg class="w-4 h-4 text-brand mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Proactive Catchment Management</li>
+                </ul>
+              </div>
+
+              <!-- B2B -->
+              <div class="fade-up" style="transition-delay: 100ms;">
+                <div class="text-xs font-bold text-stone-500 tracking-widest uppercase mb-4 border-b border-stone-200 pb-4">B2B - Businesses</div>
+                <h3 class="text-2xl font-bold text-stone-900 mb-4 tracking-tight">Farms & Cooperatives</h3>
+                <p class="text-stone-600 mb-8 leading-relaxed">Stop throwing money into the river. Alerts ensure fertilization only occurs when soil can absorb nutrients, maximizing yield and saving cash.</p>
+                <ul class="space-y-3 text-sm text-stone-700 font-medium">
+                  <li class="flex items-center"><svg class="w-4 h-4 text-brand mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Direct SMS / Push Alerts</li>
+                  <li class="flex items-center"><svg class="w-4 h-4 text-brand mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"/></svg> API Integration for Co-ops</li>
+                  <li class="flex items-center"><svg class="w-4 h-4 text-brand mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Reduced Crop Failure Claims</li>
+                </ul>
+              </div>
+ 
+              <!-- B2C -->
+              <div class="fade-up" style="transition-delay: 200ms;">
+                <div class="text-xs font-bold text-stone-500 tracking-widest uppercase mb-4 border-b border-stone-200 pb-4">B2C - Citizens</div>
+                <h3 class="text-2xl font-bold text-stone-900 mb-4 tracking-tight">Local Communities</h3>
+                <p class="text-stone-600 mb-8 leading-relaxed">A freemium app providing transparency regarding local water quality, creating public accountability and gamifying environmental compliance.</p>
+                <ul class="space-y-3 text-sm text-stone-700 font-medium">
+                  <li class="flex items-center"><svg class="w-4 h-4 text-brand mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Local Water Transparency</li>
+                  <li class="flex items-center"><svg class="w-4 h-4 text-brand mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Public Accountability</li>
+                  <li class="flex items-center"><svg class="w-4 h-4 text-brand mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Community Engagement</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer CTA -->
+        <div class="py-24 text-center bg-stone-50 border-t border-stone-200">
+          <h2 class="text-3xl md:text-5xl font-extrabold text-stone-900 mb-6 tracking-tight">Ready to protect the waters of Europe?</h2>
+          <p class="text-stone-500 mb-12 max-w-xl mx-auto text-lg leading-relaxed">Join us in shifting the paradigm from reactive water monitoring to predictive pollution prevention.</p>
+          <button onclick="document.getElementById('enter-dashboard-btn').click()" class="bg-[#69a151] hover:bg-[#4d7c3d] text-white font-bold py-4 px-10 rounded-sm shadow-sm transition-colors text-lg border border-[#69a151]">
+            Launch Interactive Platform
+          </button>
+        </div>
+
+      </section>
+
+      <!-- ================================================================
+           DASHBOARD
+           ================================================================ -->
+            <section id="dashboard" class="hidden absolute inset-0 z-50 overflow-hidden font-sans">
+
+        <!-- 1. Full Screen Map Container -->
+        <div id="map-container" class="absolute inset-0 z-0 bg-stone-100"></div>
+
+        <!-- 2. Loading Overlay (Map layer) -->
+        <div id="loading-overlay" class="map-loading-overlay bg-white/40 backdrop-blur-md absolute inset-0 z-[100]">
+          <div class="flex flex-col items-center">
+            <div class="loader"></div>
+            <p class="mt-3 text-sm font-bold text-stone-700 bg-white/90 backdrop-blur-sm px-5 py-2 rounded-full shadow-lg border border-white/50">Scanning area...</p>
+          </div>
+        </div>
+
+        <!-- 3. Floating UI Layer -->
+        <div class="absolute inset-0 z-10 pointer-events-none flex flex-col justify-between p-4 md:p-6">
+          
+          <!-- Top Section (Header Pill + Stats Pill) -->
+          <div class="flex flex-col gap-3 items-start">
+            
+            <!-- Mobile Toggle -->
+            <button id="mob-sidebar-btn" class="md:hidden pointer-events-auto bg-white/80 backdrop-blur-xl border border-white/50 shadow-lg p-2.5 rounded-xl text-stone-700 hover:bg-white transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+
+            <!-- Header Pill -->
+            <header class="pointer-events-auto bg-white/80 backdrop-blur-2xl border border-white/50 shadow-xl rounded-2xl px-5 py-3.5 flex items-center gap-6 hidden md:flex">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 flex items-center justify-center">
+                  <img src="/SenetraLogo.png" alt="Senetra Logo" class="w-full h-full object-contain">
+                </div>
+                <div>
+                  <div class="font-extrabold text-stone-900 text-xl tracking-tight leading-tight">Senetra</div>
+                  <div class="text-stone-500 text-[10px] font-bold uppercase tracking-widest">Risk Dashboard</div>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3 border-l border-stone-200/60 pl-5">
+                <!-- Search Bar -->
+                <div class="relative flex items-center group">
+                  <div class="absolute left-3 text-stone-400 group-focus-within:text-brand transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                  </div>
+                  <input id="search-bar" type="text" placeholder="Search location..." class="bg-stone-100 border-stone-200/50 border text-stone-800 text-xs font-bold pl-9 pr-4 py-2 rounded-xl w-48 focus:w-64 focus:bg-white focus:ring-2 focus:ring-brand/20 focus:border-brand outline-none transition-all duration-300 shadow-inner">
+                </div>
+
+                <div class="flex items-center space-x-1.5 text-xs text-brand font-bold bg-brand/10 px-2.5 py-1 rounded-md border border-brand/20">
+                  <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
+                  <span>Live Data</span>
+                </div>
+                <div id="zoom-warning" class="hidden text-xs text-amber-800 bg-amber-100 border border-amber-200 px-3 py-1 rounded-md font-bold shadow-sm">Zoom in to load farms</div>
+                <button id="rescan-btn" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-stone-100/80 hover:bg-white text-stone-700 border border-stone-200/50 text-xs font-bold shadow-sm transition-all">
+                  <svg id="rescan-icon" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                  <span>Rescan Area</span>
+                </button>
+              </div>
+            </header>
+
+            <!-- Stats Strip Pill -->
+            <div id="stats-strip" class="pointer-events-auto bg-stone-900/90 backdrop-blur-xl shadow-xl rounded-xl px-5 py-2.5 flex items-center gap-4 text-xs font-medium text-stone-300 border border-stone-700/50 hidden md:flex">
+              <div class="flex items-center gap-1.5"><span>Farms:</span><span class="font-bold text-white" id="strip-farms">—</span></div>
+              <div class="w-px h-3 bg-stone-700"></div>
+              <div class="flex items-center gap-1.5"><span class="text-red-500">⬤</span><span>Critical:</span><span class="font-bold text-white" id="strip-l5">—</span></div>
+              <div class="w-px h-3 bg-stone-700"></div>
+              <div class="flex items-center gap-1.5"><span class="text-orange-500">⬤</span><span>High:</span><span class="font-bold text-white" id="strip-l4">—</span></div>
+              <div class="w-px h-3 bg-stone-700"></div>
+              <div class="flex items-center gap-1.5"><span class="text-yellow-500">⬤</span><span>Mod:</span><span class="font-bold text-white" id="strip-l3">—</span></div>
+              <div class="w-px h-3 bg-stone-700"></div>
+              <div class="flex items-center gap-1.5"><span class="text-lime-500">⬤</span><span>Low:</span><span class="font-bold text-white" id="strip-l2">—</span></div>
+              <div class="w-px h-3 bg-stone-700"></div>
+              <div class="flex items-center gap-1.5"><span class="text-green-500">⬤</span><span>Min:</span><span class="font-bold text-white" id="strip-l1">—</span></div>
+              <div class="w-px h-3 bg-stone-700"></div>
+              <div class="flex items-center gap-1.5 text-stone-400"><span id="strip-time">—</span></div>
+            </div>
+          </div>
+
+          <!-- Floating Status Bar (Bottom Center) -->
+          <div id="status-bar" class="pointer-events-auto absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-xl border border-white/50 shadow-xl rounded-full px-6 py-2.5 text-xs font-bold text-stone-600 tracking-wide transition-all duration-300 z-50">
+            Pan the map to scan agricultural sectors
+          </div>
+
+        </div> <!-- /Floating UI Layer -->
+
+        <!-- Top Right Map Controls -->
+        <div class="pointer-events-auto absolute top-6 right-6 flex flex-col items-end gap-3 z-20">
+          
+          <!-- Details Sidebar (Bubbly Panel) -->
+          <aside id="sidebar" class="w-[380px] max-h-[calc(100vh-3rem)] bg-white/80 backdrop-blur-2xl border border-white/60 shadow-2xl rounded-[2rem] flex flex-col overflow-hidden transition-transform duration-300 ease-in-out translate-x-[120%] md:translate-x-0 absolute right-0 top-0 md:relative">
+            
+            <!-- Sidebar Header -->
+            <div class="px-6 py-5 border-b border-white/40 bg-white/40 backdrop-blur-md flex justify-between items-center shrink-0">
+              <div>
+                <h2 class="text-sm font-extrabold text-stone-800 tracking-tight">Sector Analysis</h2>
+                <p class="text-xs text-stone-500 font-medium mt-0.5" id="sidebar-subtitle">Click a farm polygon to inspect</p>
+              </div>
+              <button id="mobile-toggle" class="p-1.5 rounded-lg hover:bg-white/60 md:hidden transition-colors">
+                <svg class="w-5 h-5 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </button>
+            </div>
+
+            <!-- Scrollable Content -->
+            <div id="details-panel" class="flex-1 overflow-y-auto custom-scrollbar relative z-10">
+
+              <!-- Empty State -->
+              <div id="empty-state" class="flex flex-col h-full px-6 py-6">
+                <div class="flex-1 flex flex-col items-center justify-center text-center space-y-3 py-10">
+                  <div class="w-16 h-16 rounded-3xl bg-white/60 border border-white/50 shadow-sm flex items-center justify-center">
+                    <svg class="w-8 h-8 text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                  </div>
+                  <p class="text-sm text-stone-500 font-bold">No sector selected</p>
+                  <p class="text-xs text-stone-400 font-medium">Click any colored farm zone on the map</p>
+                </div>
+
+                <!-- Risk Legend -->
+                <div class="bg-white/50 rounded-2xl border border-white/50 p-5 space-y-3 text-xs shadow-sm">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="font-bold text-stone-800 text-xs uppercase tracking-widest">Risk Scale</span>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <div class="w-3 h-3 rounded bg-green-500 mt-0.5 shrink-0 shadow-sm"></div>
+                    <div>
+                      <div class="font-bold text-green-800">Level 1: Minimal Risk</div>
+                      <div class="text-stone-500 font-medium">SM &lt; 0.30 &amp; Rain &lt; 15mm. Perfect conditions.</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <div class="w-3 h-3 rounded bg-lime-500 mt-0.5 shrink-0 shadow-sm"></div>
+                    <div>
+                      <div class="font-bold text-lime-800">Level 2: Low Risk</div>
+                      <div class="text-stone-500 font-medium">Safe, but monitor updates.</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <div class="w-3 h-3 rounded bg-yellow-500 mt-0.5 shrink-0 shadow-sm"></div>
+                    <div>
+                      <div class="font-bold text-yellow-800">Level 3: Moderate Risk</div>
+                      <div class="text-stone-500 font-medium">Conditions shifting. Caution advised.</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <div class="w-3 h-3 rounded bg-orange-500 mt-0.5 shrink-0 shadow-sm"></div>
+                    <div>
+                      <div class="font-bold text-orange-800">Level 4: High Risk</div>
+                      <div class="text-stone-500 font-medium">Runoff highly likely. Do not fertilize.</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <div class="w-3 h-3 rounded bg-red-500 mt-0.5 shrink-0 shadow-sm"></div>
+                    <div>
+                      <div class="font-bold text-red-800">Level 5: Critical Risk</div>
+                      <div class="text-stone-500 font-medium">Extreme danger. Immediate runoff.</div>
+                    </div>
+                  </div>
+                  <div class="border-t border-stone-200/50 pt-3 mt-1 flex items-start space-x-3">
+                    <div class="w-3 h-1.5 bg-blue-500 rounded mt-1 shrink-0 shadow-sm"></div>
+                    <div>
+                      <div class="font-bold text-blue-800">Waterways</div>
+                      <div class="text-stone-500 font-medium">Rivers &amp; streams — runoff exposure paths</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Data State -->
+              <div id="data-state" class="hidden">
+
+                <!-- Farm Header -->
+                <div class="px-6 py-5 border-b border-white/40">
+                  <div class="flex items-start justify-between">
+                    <div class="flex-1 min-w-0">
+                      <h3 id="farm-name" class="text-lg font-extrabold text-stone-900 truncate tracking-tight">—</h3>
+                      <div class="flex items-center flex-wrap gap-2 mt-2">
+                        <span id="farm-type-badge" class="text-[10px] font-bold uppercase tracking-wider bg-brand/10 text-brand border border-brand/20 px-2 py-0.5 rounded-sm">Farmland</span>
+                        <span id="farm-crop-badge" class="text-[10px] font-bold uppercase tracking-wider bg-white/80 text-stone-600 border border-white px-2 py-0.5 rounded-sm shadow-sm"></span>
+                        <span id="farm-area-badge" class="text-[10px] font-bold uppercase tracking-wider bg-white/80 text-stone-600 border border-white px-2 py-0.5 rounded-sm shadow-sm"></span>
+                        <span id="weather-code-badge" class="weather-code-badge bg-white/80 border-white shadow-sm"></span>
+                      </div>
+                    </div>
+                    <span id="risk-badge" class="ml-3 shrink-0 px-3 py-1.5 rounded-lg text-xs font-extrabold uppercase tracking-widest shadow-sm"></span>
+                  </div>
+                  <p id="risk-recommendation" class="text-xs mt-3 leading-relaxed font-bold text-stone-700"></p>
+                </div>
+ 
+                <!-- Current Conditions -->
+                <div class="px-6 py-5 border-b border-white/40">
+                  <div class="flex items-center gap-2 mb-3 group relative">
+                    <div class="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Current Conditions</div>
+                    <div class="cursor-help text-stone-300 hover:text-stone-500 transition-colors">
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <!-- Tooltip -->
+                    <div class="absolute bottom-full left-0 mb-2 w-56 p-3 bg-stone-900 text-white text-[10px] rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl z-50 pointer-events-none border border-stone-800">
+                      <div class="font-bold text-brand-light mb-1">About Runoff Risk Score</div>
+                      The Runoff Risk Score (0-100) is a weighted calculation combining current soil saturation, 48-hour forecasted precipitation, and relative humidity. A higher score indicates a greater probability of agricultural nutrients washing into nearby waterways.
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-3">
+                    <div class="stat-card bg-white/50 rounded-2xl border border-white/50 p-4 shadow-sm group relative">
+                      <div class="flex items-center text-stone-500 mb-2 space-x-1.5">
+                        <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                        <span class="text-xs font-bold">Soil Moisture</span>
+                      </div>
+                      <div class="flex items-end space-x-1">
+                        <span id="metric-moisture" class="text-2xl font-extrabold text-stone-800 leading-none">--</span>
+                        <span class="text-[10px] font-bold text-stone-400 mb-0.5 uppercase tracking-wider">m³/m³</span>
+                      </div>
+                      <div id="moisture-bar-wrap" class="mt-3 h-1.5 rounded-full bg-white/80 overflow-hidden border border-white">
+                        <div id="moisture-bar" class="h-full rounded-full bg-brand transition-all duration-500"></div>
+                      </div>
+                      <!-- Tooltip -->
+                      <div class="absolute bottom-full left-0 mb-2 w-48 p-2.5 bg-stone-900 text-white text-[10px] rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl z-50 pointer-events-none border border-stone-800 leading-relaxed">
+                        <span class="font-bold text-brand-light">Volumetric Water Content:</span> Measures soil saturation. Values above 0.50 m³/m³ indicate critical saturation and high runoff risk.
+                      </div>
+                    </div>
+                    <div class="stat-card bg-white/50 rounded-2xl border border-white/50 p-4 shadow-sm group relative">
+                      <div class="flex items-center text-stone-500 mb-2 space-x-1.5">
+                        <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        <span class="text-xs font-bold">Temperature</span>
+                      </div>
+                      <div class="flex items-end space-x-1">
+                        <span id="metric-temp" class="text-2xl font-extrabold text-stone-800 leading-none">--</span>
+                        <span class="text-[10px] font-bold text-stone-400 mb-0.5 uppercase tracking-wider">°C</span>
+                      </div>
+                      <!-- Tooltip -->
+                      <div class="absolute bottom-full right-0 mb-2 w-48 p-2.5 bg-stone-900 text-white text-[10px] rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl z-50 pointer-events-none border border-stone-800 leading-relaxed">
+                        <span class="font-bold text-amber-400">Air Temperature:</span> Monitored at 2m height. Optimal spraying range is 2°C to 30°C for effective nutrient uptake.
+                      </div>
+                    </div>
+                    <div class="stat-card bg-white/50 rounded-2xl border border-white/50 p-4 shadow-sm group relative">
+                      <div class="flex items-center text-stone-500 mb-2 space-x-1.5">
+                        <svg class="w-4 h-4 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        <span class="text-xs font-bold">Wind Speed</span>
+                      </div>
+                      <div class="flex items-end space-x-1">
+                        <span id="metric-wind" class="text-2xl font-extrabold text-stone-800 leading-none">--</span>
+                        <span class="text-[10px] font-bold text-stone-400 mb-0.5 uppercase tracking-wider">km/h</span>
+                      </div>
+                      <!-- Tooltip -->
+                      <div class="absolute bottom-full left-0 mb-2 w-48 p-2.5 bg-stone-900 text-white text-[10px] rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl z-50 pointer-events-none border border-stone-800 leading-relaxed">
+                        <span class="font-bold text-stone-300">Wind Velocity:</span> Speeds above 15 km/h significantly increase fertilizer drift risk into nearby ecosystems.
+                      </div>
+                    </div>
+                    <div class="stat-card bg-white/50 rounded-2xl border border-white/50 p-4 shadow-sm group relative">
+                      <div class="flex items-center text-stone-500 mb-2 space-x-1.5">
+                        <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+                        <span class="text-xs font-bold">Rain (48h)</span>
+                      </div>
+                      <div class="flex items-end space-x-1">
+                        <span id="metric-rain-total" class="text-2xl font-extrabold text-stone-800 leading-none">--</span>
+                        <span class="text-[10px] font-bold text-stone-400 mb-0.5 uppercase tracking-wider">mm</span>
+                      </div>
+                      <!-- Tooltip -->
+                      <div class="absolute bottom-full right-0 mb-2 w-48 p-2.5 bg-stone-900 text-white text-[10px] rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl z-50 pointer-events-none border border-stone-800 leading-relaxed">
+                        <span class="font-bold text-blue-400">Total Forecasted Rain:</span> Accumulation over the next 48 hours. Values >15mm combined with saturation drive runoff.
+                      </div>
+                    </div>
+                    <div class="stat-card bg-white/50 rounded-2xl border border-white/50 p-4 shadow-sm group relative">
+                      <div class="flex items-center text-stone-500 mb-2 space-x-1.5">
+                        <svg class="w-4 h-4 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+                        <span class="text-xs font-bold">Humidity</span>
+                      </div>
+                      <div class="flex items-end space-x-1">
+                        <span id="metric-humidity" class="text-2xl font-extrabold text-stone-800 leading-none">--</span>
+                        <span class="text-[10px] font-bold text-stone-400 mb-0.5 uppercase tracking-wider">%</span>
+                      </div>
+                      <!-- Tooltip -->
+                      <div class="absolute bottom-full left-0 mb-2 w-48 p-2.5 bg-stone-900 text-white text-[10px] rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl z-50 pointer-events-none border border-stone-800 leading-relaxed">
+                        <span class="font-bold text-stone-400">Relative Humidity:</span> Amount of moisture in the air. High humidity (>80%) slows evaporation and prolongs soil saturation.
+                      </div>
+                    </div>
+                    <div class="stat-card bg-white/50 rounded-2xl border border-white/50 p-4 shadow-sm group relative">
+                      <div class="flex items-center text-stone-500 mb-2 space-x-1.5">
+                        <svg class="w-4 h-4 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        <span class="text-xs font-bold">Runoff Score</span>
+                      </div>
+                      <div class="flex items-end space-x-1">
+                        <span id="metric-runoff-score" class="text-2xl font-extrabold text-stone-800 leading-none">--</span>
+                        <span class="text-[10px] font-bold text-stone-400 mb-0.5 uppercase tracking-wider">/100</span>
+                      </div>
+                      <!-- Tooltip -->
+                      <div class="absolute bottom-full right-0 mb-2 w-48 p-2.5 bg-stone-900 text-white text-[10px] rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl z-50 pointer-events-none border border-stone-800 leading-relaxed">
+                        <span class="font-bold text-rose-400">Runoff Probability:</span> A weighted index (0-100) predicting the likelihood of nutrients entering waterways. Scores above 70 are critical.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Precipitation Timeline -->
+                <div class="px-6 py-5 border-b border-white/40 panel-section">
+                  <div class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-4">Precipitation Forecast</div>
+                  <div class="flex items-end space-x-1 h-16 mb-4" id="rain-chart"></div>
+                  <div class="space-y-1.5" id="weather-timeline"></div>
+                </div>
+
+                <!-- Historical Rain -->
+                <div class="px-6 py-5 border-b border-white/40 panel-section">
+                  <div class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-4">7-Day Historical Rain</div>
+                  <div id="historical-chart" class="flex items-end gap-0.5 h-10"></div>
+                  <div class="flex justify-between mt-1.5">
+                    <span class="text-[10px] font-bold text-stone-400" id="hist-label-start"></span>
+                    <span class="text-[10px] font-bold text-stone-400" id="hist-label-end">Today</span>
+                  </div>
+                </div>
+
+                <!-- Waterway Proximity Alert -->
+                <div class="px-6 py-5 border-b border-white/40 panel-section">
+                  <div class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-3">Runoff Pathway Risk</div>
+                  <div id="proximity-alert"></div>
+                </div>
+
+                <!-- Fertilizer Safe Window -->
+                <div class="px-6 py-5 border-b border-white/40 panel-section">
+                  <div class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-3">Next Safe Fertilizer Window</div>
+                  <div id="safe-window"></div>
+                </div>
+
+                <!-- Spraying Advisory -->
+                <div class="px-6 py-5 border-b border-white/40 panel-section">
+                  <div class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-3">Spraying Advisory</div>
+                  <div id="spraying-advisory" class="rounded-xl border border-white/50 bg-white/50 p-4 text-xs leading-relaxed font-medium shadow-sm"></div>
+                </div>
+
+                <!-- Coordinates -->
+                <div class="px-6 py-5 panel-section">
+                  <div class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-3">Location</div>
+                  <div id="farm-coords" class="font-mono text-[10px] font-bold tracking-wider text-stone-500 bg-white/60 border border-white/60 rounded-xl px-4 py-2 shadow-sm"></div>
+                </div>
+
+              </div><!-- /data-state -->
+            </div><!-- /details-panel -->
+          </aside>
+
+        </div>        <!-- Bottom Left Filter Menu -->
+        <div id="filter-menu" class="pointer-events-auto absolute bottom-6 left-6 flex flex-col gap-2 z-[1000]">
+          <div class="bg-white/80 backdrop-blur-2xl border border-white/50 shadow-2xl rounded-2xl p-1.5 flex items-center gap-1">
+            <button id="layer-toggle-btn" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-stone-700 hover:bg-stone-100 transition-all duration-300">
+              <span class="toggle-icon">🛰️</span><span id="layer-toggle-label">Satellite View</span>
+            </button>
+            <div class="w-px h-4 bg-stone-200"></div>
+            <button id="mode-toggle-btn" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-stone-700 hover:bg-stone-100 transition-all duration-300">
+              <span class="toggle-icon">🌙</span><span id="mode-toggle-label">Night Mode</span>
+            </button>
+            <div class="w-px h-4 bg-stone-200"></div>
+            <button id="waterway-toggle-btn" class="active flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-stone-700 hover:bg-stone-100 transition-all duration-300">
+              <span class="toggle-icon">🌊</span><span>Waterways</span>
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+    </div><!-- /#app -->
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

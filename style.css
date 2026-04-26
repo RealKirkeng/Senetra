@@ -1,0 +1,183 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+html, body {
+  margin: 0; padding: 0;
+  height: 100%; width: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── LOADER ────────────────────────────────────────────────── */
+.loader {
+  border: 3px solid #e2e8f0;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.map-loading-overlay {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1000; visibility: hidden; opacity: 0;
+  transition: opacity 0.25s, visibility 0.25s;
+}
+.map-loading-overlay.active { visibility: visible; opacity: 1; }
+
+/* ── LEAFLET ───────────────────────────────────────────────── */
+.leaflet-container { font-family: 'Inter', sans-serif; }
+.leaflet-popup-content-wrapper {
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12) !important;
+  padding: 0 !important; overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+.leaflet-popup-content { margin: 0 !important; width: auto !important; min-width: 220px; }
+.leaflet-popup-tip-container { display: none; }
+.leaflet-tooltip.waterway-tip {
+  background: #1e3a5f; color: white; border: none;
+  border-radius: 6px; font-size: 12px; font-weight: 600;
+  padding: 4px 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.leaflet-tooltip.waterway-tip::before { display: none; }
+
+/* ── SCROLLBAR ─────────────────────────────────────────────── */
+#details-panel::-webkit-scrollbar { width: 4px; }
+#details-panel::-webkit-scrollbar-track { background: #f8fafc; }
+#details-panel::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+/* ── STAT CARD ─────────────────────────────────────────────── */
+.stat-card { transition: box-shadow 0.15s, transform 0.15s; }
+.stat-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); transform: translateY(-1px); }
+
+/* ── TIMELINE ROW ──────────────────────────────────────────── */
+.timeline-row {
+  transition: background 0.15s; border-radius: 6px;
+  padding: 6px 8px; cursor: pointer;
+}
+.timeline-row:hover { background: #f1f5f9; }
+.timeline-row.expanded .timeline-detail { display: block; }
+.timeline-detail { display: none; animation: fadeDown 0.2s ease; }
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* ── LANDING ───────────────────────────────────────────────── */
+.fade-up {
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+.fade-up:nth-child(1) { animation-delay: 0.1s; }
+.fade-up:nth-child(2) { animation-delay: 0.2s; }
+.fade-up:nth-child(3) { animation-delay: 0.35s; }
+.fade-up:nth-child(4) { animation-delay: 0.5s; }
+.fade-up:nth-child(5) { animation-delay: 0.6s; }
+
+
+/* ── HERO ANIMATIONS ────────────────────────────────────────── */
+.hero-zoom {
+  animation: slowZoom 20s ease-in-out infinite alternate;
+}
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+/* ── MINI CHART BARS ───────────────────────────────────────── */
+.rain-bar {
+  background: #bfdbfe; border-radius: 2px 2px 0 0;
+  transition: height 0.4s ease; min-height: 2px;
+}
+.rain-bar.has-rain { background: #3b82f6; }
+
+/* ── SATELLITE TOGGLE ──────────────────────────────────────── */
+#map-container {
+  transition: opacity 0.25s ease-in-out;
+}
+
+#filter-menu button.active {
+  background: #1e293b;
+  color: white;
+  border-color: #334155;
+}
+
+#filter-menu button.active .toggle-icon {
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));
+}
+
+
+/* ── RUNOFF GAUGE ──────────────────────────────────────────── */
+.gauge-wrap { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.gauge-svg { overflow: visible; }
+.gauge-bg { fill: none; stroke: #e2e8f0; stroke-width: 8; stroke-linecap: round; }
+.gauge-fill {
+  fill: none; stroke-width: 8; stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s cubic-bezier(.4,0,.2,1), stroke 0.4s;
+  transform-origin: center; transform: rotate(-230deg);
+}
+.gauge-text-val { font-size: 18px; font-weight: 800; text-anchor: middle; dominant-baseline: middle; }
+.gauge-text-lbl { font-size: 7px; fill: #94a3b8; text-anchor: middle; dominant-baseline: middle; }
+
+/* ── SPARKLINE ─────────────────────────────────────────────── */
+.sparkline-svg { overflow: visible; }
+.sparkline-path { fill: none; stroke: #3b82f6; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.sparkline-area { fill: url(#sparkGrad); }
+.sparkline-dot { fill: #3b82f6; }
+
+
+
+/* ── PROXIMITY ALERT ───────────────────────────────────────── */
+.proximity-alert {
+  display: flex; align-items: flex-start; gap: 8px;
+  background: #fff7ed; border: 1px solid #fed7aa;
+  border-radius: 10px; padding: 10px 12px;
+  font-size: 12px; color: #92400e;
+}
+.proximity-safe {
+  background: #f0fdf4; border-color: #bbf7d0; color: #14532d;
+}
+
+/* ── SAFE WINDOW ───────────────────────────────────────────── */
+.safe-window-card {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border: 1px solid #86efac; border-radius: 12px;
+  padding: 12px 14px;
+}
+.safe-window-none {
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  border-color: #fca5a5;
+}
+
+/* ── WEATHER CODE BADGE ────────────────────────────────────── */
+.weather-code-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #f1f5f9; border: 1px solid #e2e8f0;
+  border-radius: 8px; padding: 3px 9px;
+  font-size: 12px; font-weight: 500; color: #475569;
+}
+
+/* ── SECTION HEADER ────────────────────────────────────────── */
+.section-header {
+  font-size: 10px; font-weight: 700; color: #94a3b8;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+/* ── PANEL SLIDE IN ────────────────────────────────────────── */
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.panel-section { animation: slideInUp 0.25s ease; }
+
+#waterway-toggle-btn.active { 
+  background: #0f172a; 
+  color: white; 
+  border-color: #334155; 
+}
